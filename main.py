@@ -49,7 +49,7 @@ class Followr:
     def follow(self):
         try:
             for target in self.api.followers_ids(screen_name=self.target):
-                if self.count < 50:
+                if self.count < 75:
                     if target not in self.followers and target not in self.following and target not in self.recently_followed and target not in self.failed_follows and target != self.api.me().id:
                         print('Following', target)
                         self.api.create_friendship(target)
@@ -57,6 +57,7 @@ class Followr:
                         self.followed.append(target)
                         print("FOLLOWED", target)
                         self.count += 1
+                        print(self.count)
             else:
                 return
         except:
@@ -82,9 +83,12 @@ class Followr:
         for user in self.recently_followed:
             if user not in self.followers:
                 self.failed_follows.append(user)
-                sleep(randint(0,50))
-                self.api.destroy_friendship(user)
-                print('unfollowed', user)
+                sleep(randint(0,30))
+                try:
+                    self.api.destroy_friendship(user)
+                    print('unfollowed', user)
+                except:
+                    print(user, "couldn't be unfollowed - CHECK IT OUT")
 
 if __name__ == "__main__":
     Followr("SkyBetChamp").run()
