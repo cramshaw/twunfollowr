@@ -91,4 +91,4 @@ class Followr:
                     print(user, "couldn't be unfollowed - CHECK IT OUT")
 
 if __name__ == "__main__":
-    Followr("SkyBetChamp").run()
+    Followr("RUFC_FanApp").run()

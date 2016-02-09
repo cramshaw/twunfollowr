@@ -23,7 +23,7 @@ var/
 *.egg-info/
 .installed.cfg
 *.egg
-export-
+export-keys
 failed_follows.txt
 follow.txt
 
